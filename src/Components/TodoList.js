@@ -1,16 +1,15 @@
 import React from 'react';
 import Todo from "./Todo";
-const TodoList = ({ todos, setTodos }) => {
+const TodoList = ({ todos, handleDeleteTodo, handleToggleCompleteTodo }) => {
     return (
         <div className="todo-box">
             <ul className="todo-list">
                 {todos.map(todo => (
                     <Todo
-                        setTodos={setTodos}
-                        todos={todos}
-                        key={todo.id}
                         todo={todo}
-                        text={todo.text}
+                        key={todo.id}
+                        handleDelete={handleDeleteTodo}
+                        handleToggleComplete={handleToggleCompleteTodo}
                     />
                 ))}
             </ul>

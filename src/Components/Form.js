@@ -1,22 +1,26 @@
-import React from "react";
+import { useState } from "react";
 
-function Form({ setInputText, todos, setTodos, inputText }) { //create form component
-    const inputTextHandler = (e) => {
-        console.log(e.target.value);
+function Form({ handleAddTodo }) {
+    const [inputText, setInputText] = useState("");
+
+    const handleInputChange = (e) => {
         setInputText(e.target.value);
     };
-    const submitTodoHandler = (e) => {
-        e.preventDefault();
-        setTodos([
-            ...todos,
-            { text: inputText, completed: false, id: Math.random() * 1000 },
-        ]);
+
+    const handleSubmit = (e) => {
+        handleAddTodo(e, inputText);
         setInputText("");
-    };
+    }
     return (
         <form>
-            <input value={inputText} onChange={inputTextHandler} type="text" className="todo-input" />
-            <button onClick={submitTodoHandler} className="todo-button" type="submit">
+            <input value={inputText}
+                onChange={inputTextHandler}
+                type="text"
+                className="todo-input" />
+            <button
+                onClick={handleSubmit}
+                className="todo-button"
+                type="submit">
             </button>
             <div className="select">
                 <select name="todos" className="filter-todo">

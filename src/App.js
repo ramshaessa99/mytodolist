@@ -6,6 +6,9 @@ import TodoList from "./Components/TodoList";
 function App() {
   const { todos, handleAddTodo, handleDeleteTodo, handleToggleCompleteTodo } =
   useTodo();
+
+  const completedTodo = todos.filter(todo => todo.completed === true) //filtering out todo based on completed items
+
   return (
     <div className="App">
       <header>
@@ -13,6 +16,12 @@ function App() {
       </header>
       <Form handleAddTodo={handleAddTodo} />
        <TodoList
+        todos={todos}
+        handleDeleteTodo={handleDeleteTodo}
+        handleToggleCompleteTodo={handleToggleCompleteTodo}
+      />
+
+      <TodoList
         todos={todos}
         handleDeleteTodo={handleDeleteTodo}
         handleToggleCompleteTodo={handleToggleCompleteTodo}

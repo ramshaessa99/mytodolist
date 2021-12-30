@@ -5,6 +5,7 @@ const Todo = ({ todo, handleDelete, handleToggleComplete }) => {
             <li className={'todo-item ${todo.completed ? "completed" : ""}'}>
                 {todo.text}
             </li>
+            <DatePicker date={todo.date}/>
             <button
                 onClick={() => handleToggleComplete(todo.id)}
                 className="complete-btn"

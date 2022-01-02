@@ -1,22 +1,26 @@
 import React from 'react';
-const Todo = ({ todo, handleDelete, handleToggleComplete }) => {
+
+function Todo({todo,handleSetDueDate, handleDeleteTodo, handleToggleComplete}) {
+    const handlePickDate = (a) => {
+        handleSetDueDate(todo.id, e.target.value)
+    }
+
     return (
         <div className="todo">
-            <li className={'todo-item ${todo.completed ? "completed" : ""}'}>
-                {todo.text}
-            </li>
-            <DatePicker date={todo.date}/>
-            <button
-                onClick={() => handleToggleComplete(todo.id)}
-                className="complete-btn"
-            >
-
-            </button>
-            <button onClick={() => handleDelete(todo.id)} className="trash-btn">
-                <i className="fas fa-trash"></i>
-            </button>
+        <input
+        type="checkbox"
+        checked={todo.completed}
+        onChange={() => handleToggleComplete(todo.id)}
+        />
+        <li className={'todo-item ${todo.completed ? "todo-item__checked" : ""}'}>
+        {todo.text}
+        </li>
+        <input type="date" value={todo.dueDate} onChange={() => } />
+        <button onClick={() => handleDeleteTodo(todo.id)} className="trash-btn">
+        </button>
         </div>
+    
     );
-};
+}
 
 export default Todo;

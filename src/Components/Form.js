@@ -17,7 +17,7 @@ function Form({ handleAddTodo }) {
                 onChange={inputTextHandler}
                 type="text"
                 className="todo-input" />
-                <DatePicker></DatePicker>
+            <DatePicker></DatePicker>
             <button
                 onClick={handleSubmit}
                 className="todo-button"
